@@ -1,12 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { Heart, Star, Sparkles, MessageCircle } from 'lucide-react';
+import { Heart, Star, Sparkles, MessageCircle, Music, Gift } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import FloatingHearts from '@/components/FloatingHearts';
 import LoveMessage from '@/components/LoveMessage';
-import PhotoGallery from '@/components/PhotoGallery';
-import CountdownTimer from '@/components/CountdownTimer';
 
 const Index = () => {
   const [showMessage, setShowMessage] = useState(false);
@@ -18,6 +16,24 @@ const Index = () => {
     }, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  const loveReasons = [
+    "Your beautiful smile that brightens my darkest days",
+    "The way you laugh at my silly jokes",
+    "Your kindness towards everyone you meet",
+    "How you make ordinary moments magical",
+    "Your strength and determination in everything you do",
+    "The peace I feel when I'm with you"
+  ];
+
+  const promises = [
+    "To love you more each passing day",
+    "To be your biggest supporter always",
+    "To make you smile when you're sad",
+    "To share all of life's adventures with you",
+    "To cherish every moment we have together",
+    "To be the best version of myself for you"
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-rose-100 relative overflow-hidden">
@@ -70,16 +86,20 @@ const Index = () => {
             </CardContent>
           </Card>
 
-          {/* Countdown Timer Card */}
+          {/* Music & Love Card */}
           <Card className="bg-white/80 backdrop-blur-sm border-purple-200 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
             <CardContent className="p-8">
               <div className="text-center">
-                <Star className="text-yellow-500 mx-auto mb-4 animate-bounce" size={48} />
-                <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Love Story</h2>
-                <CountdownTimer />
-                <p className="text-gray-600 mt-4">
-                  Every second with you is a precious gift that I treasure forever 💖
+                <Music className="text-purple-500 mx-auto mb-4 animate-bounce" size={48} />
+                <h2 className="text-3xl font-bold text-gray-800 mb-4">You Are My Song</h2>
+                <p className="text-gray-600 mb-6">
+                  Every beat of my heart plays a melody dedicated to you. You are the rhythm that makes my life dance with joy.
                 </p>
+                <div className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg p-4 border-2 border-purple-200">
+                  <p className="text-purple-700 font-medium italic">
+                    "In your eyes, I found my home. In your heart, I found my love. In your soul, I found my mate."
+                  </p>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -88,8 +108,51 @@ const Index = () => {
         {/* Love Message Component */}
         {showMessage && <LoveMessage />}
 
-        {/* Photo Gallery */}
-        <PhotoGallery />
+        {/* Why I Love You Section */}
+        <div className="mb-12">
+          <div className="text-center mb-8">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-4">
+              Why I Love You
+            </h2>
+            <p className="text-gray-600 text-lg">Every little thing about you makes me fall deeper in love</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {loveReasons.map((reason, index) => (
+              <Card key={index} className="bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group">
+                <CardContent className="p-6">
+                  <div className="text-center">
+                    <Heart className="text-pink-500 mx-auto mb-3 group-hover:animate-pulse" size={32} />
+                    <p className="text-gray-700 leading-relaxed">{reason}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* My Promises Section */}
+        <div className="mb-12">
+          <div className="text-center mb-8">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+              My Promises to You
+            </h2>
+            <p className="text-gray-600 text-lg">These are the vows I make to you from the depths of my heart</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {promises.map((promise, index) => (
+              <Card key={index} className="bg-gradient-to-r from-pink-50 to-purple-50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-4">
+                    <Gift className="text-purple-500 group-hover:animate-bounce flex-shrink-0" size={28} />
+                    <p className="text-gray-700 leading-relaxed">{promise}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
 
         {/* Final Love Declaration */}
         <div className="text-center mt-16 mb-8">
